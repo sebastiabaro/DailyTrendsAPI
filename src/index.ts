@@ -1,6 +1,4 @@
-// import { connectDatabase } from './utils/database';
-import ElPaisScraper from './services/scrapers/elPaisScraper';
-import ElMundoScraper from './services/scrapers/elMundoScraper';
+import { connectDatabase } from './utils/database';
 
 /**
  * Función anónima autoejecutable que inicializa la aplicación.
@@ -9,18 +7,7 @@ import ElMundoScraper from './services/scrapers/elMundoScraper';
 void (async () => {
     try {
         // Intenta conectarse a la base de datos
-        // await connectDatabase();
-        const elpais = new ElPaisScraper();
-        const news = await elpais.fetchNews();
-        news.forEach((t) => {
-            console.log(t);
-        });
-
-        const elmundo = new ElMundoScraper();
-        const newsm = await elmundo.fetchNews();
-        newsm.forEach((t) => {
-            console.log(t);
-        });
+        await connectDatabase();
     } catch (error) {
         // Muestra el error en la consola si no se pudo iniciar el servidor
         console.error('Error starting the server:', error);
