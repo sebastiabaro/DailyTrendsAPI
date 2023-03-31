@@ -9,7 +9,7 @@
     "overrides": [],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
-        "project": "./tsconfig.app.json"
+        "project": "./tsconfig.json"
     },
     "rules": {
         "@typescript-eslint/explicit-function-return-type": "off"

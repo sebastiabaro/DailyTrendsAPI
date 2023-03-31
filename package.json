@@ -4,8 +4,7 @@
     "main": "index.js",
     "scripts": {
         "test": "jest",
-        "build": "tsc -p tsconfig.app.json",
-        "build-tests": "tsc -p tsconfig.test.json",
+        "build": "tsc",
         "lint": "eslint . --ext .ts",
         "lint-fix": "eslint . --ext .ts --fix",
         "start": "node ./dist/index.js"
