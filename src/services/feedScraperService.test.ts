@@ -16,12 +16,14 @@ afterAll(async () => {
 
 describe('Scraper', () => {
     describe('ElMundoScraper', () => {
+        // Comprueba si se obtienen noticias desde el periódico El Mundo
         it('debería obtener noticias', async () => {
             const scraper = new ElMundoScraper();
             const news = await scraper.fetchNews();
             expect(news.length).toBeGreaterThan(0);
         });
 
+        // Comprueba si las propiedades de los artículos se extraen correctamente en El Mundo
         it('debería extraer correctamente las propiedades de los artículos', async () => {
             const scraper = new ElMundoScraper();
             const news = await scraper.fetchNews();
@@ -32,13 +34,16 @@ describe('Scraper', () => {
         });
     });
 
+    // Pruebas para la clase ElPaisScraper
     describe('ElPaisScraper', () => {
+        // Comprueba si se obtienen noticias desde el periódico El País
         it('debería obtener noticias', async () => {
             const scraper = new ElPaisScraper();
             const news = await scraper.fetchNews();
             expect(news.length).toBeGreaterThan(0);
         });
 
+        // Comprueba si las propiedades de los artículos se extraen correctamente en El Pais
         it('debería extraer correctamente las propiedades de los artículos', async () => {
             const scraper = new ElPaisScraper();
             const news = await scraper.fetchNews();
