@@ -1,4 +1,4 @@
-import { connect } from 'mongoose';
+import { connect, connection } from 'mongoose';
 
 /**
  * Conecta a la base de datos utilizando Mongoose.
@@ -18,5 +18,20 @@ export async function connectDatabase(): Promise<void> {
     } catch (error) {
         console.error('Error connecting to MongoDB:', error);
         process.exit(1);
+    }
+}
+
+/**
+ * Desconecta de la base de datos utilizando Mongoose.
+ *
+ * @returns {Promise<void>} Promesa que se resuelve cuando la desconexión de la base de datos se realiza correctamente.
+ */
+export async function disconnectDatabase(): Promise<void> {
+    try {
+        await connection.close();
+        console.log('MongoDB disconnected successfully');
+    } catch (error) {
+        console.error('Error disconnecting from MongoDB:', error);
+        throw error;
     }
 }
