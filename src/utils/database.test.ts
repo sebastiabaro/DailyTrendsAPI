@@ -3,6 +3,7 @@ import { connection as mongooseConnection } from 'mongoose';
 
 beforeAll(async () => {
     // Conectarse a la base de datos antes de ejecutar las pruebas
+    console.log = jest.fn();
     await connectDatabase();
 });
 

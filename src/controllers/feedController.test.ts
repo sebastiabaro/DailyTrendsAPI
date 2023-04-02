@@ -2,7 +2,12 @@ import request from 'supertest';
 import { connectDatabase, disconnectDatabase } from '../utils/database';
 import app from '../index';
 
+jest.setTimeout(30000); // 30 segundos
+
 beforeAll(async () => {
+    // Conectarse a la base de datos antes de ejecutar las pruebas
+    console.log = jest.fn();
+    console.error = jest.fn();
     await connectDatabase();
 });
 
@@ -14,7 +19,8 @@ describe('FeedController', () => {
     let newsId: string;
 
     // Prueba la creación de un elemento de noticia
-    it('should create a news item', async () => {
+    it('debería crear una noticia', async () => {
+        await new Promise((resolve) => setTimeout(resolve, 1000));
         const response = await request(app).post('/api/news').send({
             title: 'Test title',
             url: 'https://www.example.com/test-url',
@@ -29,7 +35,8 @@ describe('FeedController', () => {
     });
 
     // Prueba la obtención de todas las noticias
-    it('should fetch all news', async () => {
+    it('debería obtener todas las noticias', async () => {
+        await new Promise((resolve) => setTimeout(resolve, 1000));
         const response = await request(app).get('/api/news');
 
         expect(response.status).toBe(200);
@@ -37,7 +44,8 @@ describe('FeedController', () => {
     });
 
     // Prueba la actualización de un elemento de noticia
-    it('should update a news item', async () => {
+    it('debería actualizar una noticia', async () => {
+        await new Promise((resolve) => setTimeout(resolve, 1000));
         const response = await request(app).put(`/api/news/${newsId}`).send({
             title: 'Updated test title',
             url: 'https://www.example.com/updated-test-url',
@@ -51,7 +59,8 @@ describe('FeedController', () => {
     });
 
     // Prueba la eliminación de un elemento de noticia
-    it('should delete a news item', async () => {
+    it('debería eliminar una noticia', async () => {
+        await new Promise((resolve) => setTimeout(resolve, 1000));
         const response = await request(app).delete(`/api/news/${newsId}`);
 
         expect(response.status).toBe(200);

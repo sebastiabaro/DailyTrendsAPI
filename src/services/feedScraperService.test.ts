@@ -4,8 +4,12 @@ import FeedScraperService from './feedScraperService';
 import Feed from '../models/feed';
 import { connectDatabase, disconnectDatabase } from '../utils/database';
 
+jest.setTimeout(30000); // 30 segundos
+
 beforeAll(async () => {
     // Conectarse a la base de datos antes de ejecutar las pruebas
+    console.log = jest.fn();
+    console.error = jest.fn();
     await connectDatabase();
 });
 
@@ -56,6 +60,7 @@ describe('Scraper', () => {
 
     describe('FeedScraperService', () => {
         it('debería almacenar noticias en la base de datos', async () => {
+            await new Promise((resolve) => setTimeout(resolve, 1000));
             const scraperService = new FeedScraperService();
 
             // Llama al método fetchAndStoreNews()

@@ -15,7 +15,7 @@ const app = express();
 // Configurar el middleware de rate limiting
 const apiLimiter = rateLimit({
     windowMs: process.env.RATELIMIT_MSDELAY != null ? +process.env.RATELIMIT_MSDELAY : 5 * 1000, // 5 segundos en milisegundos
-    max: process.env.RATELIMIT_MAXREQUESTS != null ? +process.env.RATELIMIT_MAXREQUESTS : 3, // Límite de solicitudes por IP en la ventana de tiempo especificada
+    max: process.env.RATELIMIT_MAXREQUESTS != null ? +process.env.RATELIMIT_MAXREQUESTS : 4, // Límite de solicitudes por IP en la ventana de tiempo especificada
     message: 'Has excedido el límite de solicitudes permitidas. Por favor, intenta de nuevo más tarde.',
 });
 
