@@ -10,5 +10,6 @@
         "outDir": "./dist",
         "rootDir": "./src"
     },
-    "include": ["src/**/*.ts"]
+    "include": ["src/**/*.ts", "src/services/feedScraperService.test.ts.off", "src/controllers/feedController.test.ts.off"],
+    "exclude": ["**.test.ts"]
 }
