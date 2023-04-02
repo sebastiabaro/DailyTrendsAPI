@@ -30,7 +30,7 @@ app.use(express.json());
 app.use('/api', apiLimiter, feedRoutes);
 
 // Configura el puerto en el que se ejecutará el servidor
-const PORT = process.env.PORT != null ? +process.env.PORT : 3000;
+const port = process.env.PORT != null ? +process.env.PORT : 3000;
 
 // Crea una instancia de FeedScraperService
 const feedScraperService = new FeedScraperService();
@@ -48,8 +48,8 @@ void (async () => {
         feedScraperService.start(process.env.SERVICE_INTERVAL != null ? +process.env.SERVICE_INTERVAL : 60000 * 60); // Ejecuta el scraping cada 60 minutos
 
         // Inicia el servidor Express
-        app.listen(PORT, () => {
-            console.log(`Server is running on port ${PORT}`);
+        app.listen(port, () => {
+            console.log(`Server is running on port ${port}`);
         });
     } catch (error) {
         // Muestra el error en la consola si no se pudo iniciar el servidor
