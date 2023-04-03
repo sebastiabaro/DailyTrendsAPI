@@ -1,6 +1,6 @@
 import request from 'supertest';
 import { connectDatabase, disconnectDatabase } from '../utils/database';
-import app from '../index';
+import app from '../app';
 
 jest.setTimeout(30000); // 30 segundos
 
